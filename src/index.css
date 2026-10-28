@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+:root {
+  --font-orbitron: 'Orbitron', monospace, sans-serif;
+  --font-rajdhani: 'Rajdhani', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Share Tech Mono', monospace;
+  --font-chakra: 'Chakra Petch', sans-serif;
+
+  /* Professional Smooth Motion Timing Functions (Out-Expo & Smooth Spring-like curves) */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-fluid: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+body {
+  font-family: var(--font-mono);
+  background-color: #030712;
+  color: #e2e8f0;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Cyberpunk Scrollbars with Smooth Glow */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(3, 7, 18, 0.85);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 245, 212, 0.35);
+  border-radius: 3px;
+  transition: background 0.3s var(--ease-expo);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 245, 212, 0.85);
+  box-shadow: 0 0 10px rgba(0, 245, 212, 0.6);
+}
+
+/* CRT Scanlines Overlay */
+.crt-scanlines::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+              linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+  z-index: 40;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+.crt-scanlines::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.65) 100%);
+  z-index: 41;
+  pointer-events: none;
+}
+
+/* Cyberpunk Chamfer & Slanted Cuts */
+.clip-chamfer-tl-br {
+  clip-path: polygon(10px 0%, 100% 0%, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0% 100%, 0% 10px);
+}
+
+.clip-chamfer-tr-bl {
+  clip-path: polygon(0% 0%, calc(100% - 12px) 0%, 100% 12px, 100% 100%, 12px 100%, 0% calc(100% - 12px));
+}
+
+.clip-slanted-tab {
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+
+/* Professional Cinematic Animations */
+@keyframes workstation-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.99);
+    filter: blur(4px);
+  }
+  60% {
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+@keyframes holographic-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes spin-cw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-ccw {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes breathing-glow {
+  0%, 100% {
+    opacity: 0.65;
+    filter: drop-shadow(0 0 6px rgba(0, 245, 212, 0.4));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 16px rgba(0, 245, 212, 0.8));
+  }
+}
+
+@keyframes radar-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes laser-packet-flow {
+  0% { transform: translateX(-100%); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateX(100%); opacity: 0; }
+}
+
+@keyframes wiper-swing {
+  0% { transform: rotate(-45deg); }
+  50% { transform: rotate(45deg); }
+  100% { transform: rotate(-45deg); }
+}
+
+@keyframes card-border-pulse {
+  0%, 100% {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    border-color: rgba(0, 245, 212, 0.4);
+  }
+}
+
+/* Animation Utility Classes */
+.animate-workstation-enter {
+  animation: workstation-fade-in 0.45s var(--ease-expo) forwards;
+}
+
+.animate-spin-cw-12 {
+  animation: spin-cw 12s linear infinite;
+}
+
+.animate-spin-ccw-7 {
+  animation: spin-ccw 7s linear infinite;
+}
+
+.animate-spin-tape-3 {
+  animation: spin-cw 2.4s linear infinite;
+}
+
+.animate-breathing-glow {
+  animation: breathing-glow 3s ease-in-out infinite;
+}
+
+.animate-radar-sweep {
+  animation: radar-sweep 4s linear infinite;
+}
+
+.animate-card-pulse {
+  animation: card-border-pulse 4s ease-in-out infinite;
+}
+
+/* Sandevistan Multi-Layer Ghost After-Images (Edgerunners Warp) */
+.sandevistan-trails {
+  filter: drop-shadow(-5px 0px 0px rgba(0, 255, 255, 0.6))
+          drop-shadow(5px 0px 0px rgba(204, 255, 0, 0.7))
+          drop-shadow(0 0 20px rgba(204, 255, 0, 0.4));
+  animation: sandevistan-jitter 0.12s steps(3) infinite;
+}
+
+@keyframes sandevistan-jitter {
+  0% { transform: translate(0, 0); }
+  33% { transform: translate(-1.5px, 0.5px); }
+  66% { transform: translate(1.5px, -0.5px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Smooth Interactive Card Hover Elevate with Specular Glass Sheen */
+.cyber-card-interactive {
+  position: relative;
+  transition: transform 0.4s var(--ease-expo), box-shadow 0.4s var(--ease-expo), border-color 0.4s var(--ease-expo);
+  transform: translateZ(0);
+}
+.cyber-card-interactive:hover {
+  transform: translateY(-3px) scale(1.003);
+}
+.cyber-card-interactive::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 40%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 100%
+  );
+  transform: skewX(-25deg);
+  transition: left 0.8s var(--ease-expo);
+  pointer-events: none;
+  z-index: 25;
+}
+.cyber-card-interactive:hover::before {
+  left: 180%;
+}
+
+/* Glass Panels with Multi-Layer Backdrop */
+.glass-panel-neon {
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+}
+
+.font-orbitron {
+  font-family: var(--font-orbitron);
+}
+
+.font-rajdhani {
+  font-family: var(--font-rajdhani);
+}
+
+.font-chakra {
+  font-family: var(--font-chakra);
+}
